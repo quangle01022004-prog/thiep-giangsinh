@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thiệp Giáng Sinh</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        background: white;
+        width: 340px;
+        padding: 25px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+        z-index: 2;
+        animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+        color: #c0392b;
+        margin: 10px 0;
+    }
+
+    p {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .icons {
+        font-size: 40px;
+        margin: 10px 0;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 14px;
+        color: gray;
+    }
+
+    /* ❄️ TUYẾT RƠI */
+    .snow {
+        position: absolute;
+        top: -10px;
+        color: white;
+        font-size: 14px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+        }
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 20px;
+        background: #c0392b;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 NHẠC GIÁNG SINH -->
+<audio id="music" loop>
+    <source src="jinglebells.mp3" type="audio/mpeg">
+</audio>
+</audio>
+
+<div class="card">
+    <h1>🎄 Merry Christmas 🎄</h1>
+
+    <div class="icons">🎅 ❄️ ⭐ 🎁</div>
+
+    <p>
+        Chúc anh Hai đẹp trai một mùa Giáng Sinh<br>
+        an lành – hạnh phúc – ấm áp ❤️
+    </p>
+
+    <button onclick="playMusic()">▶ Bật nhạc</button>
+
+    <div class="footer">
+        From: Quang Lễ Đẹp Trai 💌
+    </div>
+</div>
+
+<script>
+    /* 🎶 BẬT NHẠC */
+    function playMusic() {
+        document.getElementById("music").play();
+    }
+
+    /* ❄️ TẠO TUYẾT RƠI */
+    function createSnow() {
+        const snow = document.createElement("div");
+        snow.className = "snow";
+        snow.innerHTML = "❄️";
+        snow.style.left = Math.random() * window.innerWidth + "px";
+        snow.style.animationDuration = (3 + Math.random() * 5) + "s";
+        snow.style.fontSize = (10 + Math.random() * 20) + "px";
+
+        document.body.appendChild(snow);
+
+        setTimeout(() => {
+            snow.remove();
+        }, 8000);
+    }
+
+    setInterval(createSnow, 200);
+</script>
+
+</body>
+</html>
